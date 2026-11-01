@@ -1,5 +1,7 @@
 THE FIFTH ALIBI — COMP9001 Final Project
 ========================================
+The complete project download link:https://github.com/meli0947/The-fifth-alibi/releases/download/v1.0/The_Fifth_Alibi_MenghaoLi.zip
+
 
 1. PROJECT OVERVIEW
 -------------------
