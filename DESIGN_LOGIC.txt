@@ -1,0 +1,112 @@
+THE FIFTH ALIBI - GAME LOGIC SUMMARY
+=====================================
+
+0. PLAYER GUIDANCE
+------------------
+The opening explains Evelyn's two possible objectives, the five-round loop,
+the 0-100 trust and suspicion scale, mandatory voting and the final evidence
+chain. Menus accept numbered input, reject values outside the displayed range
+and show 0 when cancellation is available. Action menus display remaining uses.
+Evidence choices show the subject, investigation stage, likely effect and full
+known detail so that the player can make an informed accusation.
+
+1. CASE GENERATION
+------------------
+A reusable case code seeds Python's random generator. It determines the killer,
+method, location, weapon, time, motive, cover-up, round order, evidence,
+relationships, trust and starting suspicions. Evelyn is always the player's
+character, but the killer is selected from all five suspects.
+
+
+2. FIVE INVESTIGATION ROUNDS
+----------------------------
+Every case contains two crime-scene rounds, one movement round, one secrets
+round and one testimony round. Their order changes with the case code. Each
+round contains exactly five leads, one for each suspect. Evelyn can investigate
+at most two because her total actions are limited.
+
+
+3. NPC PRIVATE INVESTIGATION
+----------------------------
+At the start of each round, four NPCs select four distinct private leads. Their
+choices are based on personal suspicion, public suspicion, current evidence,
+retaliation and personality. Their real evidence changes their later votes.
+They decide what to say only after Evelyn finishes her actions.
+
+
+4. PERSUASION AND INFORMATION EXCHANGE
+---------------------------------------
+Persuasion depends on the NPC's preferred communication style, trust,
+suspicion, available evidence and Evelyn's credibility. During an exchange,
+the offered evidence is actually added to the NPC's knowledge. The NPC may
+return genuine evidence or provide a claim directed at another suspect.
+The program does not label the returned information as true or false.
+
+
+5. DECEPTION
+------------
+Each lie has a base risk. Discovery is probabilistic and is also affected by
+counter-evidence, the listener's suspicion and trust, and Evelyn's credibility.
+A high-risk lie is not guaranteed to fail, while a low-risk lie is not
+guaranteed to succeed. Exposure damages trust and credibility and increases
+Evelyn's suspicion.
+
+
+6. STATEMENTS AND VOTES
+-----------------------
+Every character speaks and votes in every round. NPC statements can contain a
+full disclosure, partial disclosure, refusal or misleading accusation. The
+wording also reflects character tendencies. Votes use private knowledge rather
+than only public dialogue. Recent evidence and controlled uncertainty prevent
+votes from becoming completely fixed after the first round.
+
+After every vote, Detective Reed identifies the vote leader or tie, summarises
+the player's actual discoveries, checks whether the submitted evidence concerns
+the accused person and asks the person under greatest pressure a stage-specific
+question. The response reflects that character's role without revealing whether
+their earlier statement was truthful.
+
+
+7. FINAL VERDICT
+----------------
+The final decision combines 25 accumulated votes, Evelyn's final accusation
+and two chosen evidence items. Two positive items about the same suspect form a
+strong chain only when they come from different investigation categories. A
+unanimous five-person vote in any round can independently create a conviction.
+
+The closing explanation shows the accumulated vote leader, the direction of
+each selected clue, whether the clues form a cross-stage chain, the score gap
+between the leading suspects and the exact threshold used for conviction.
+
+
+8. PLAYER GOAL
+--------------
+If Evelyn is innocent, she wins by securing the real killer's conviction. If
+Evelyn is the killer, she wins by avoiding conviction. The program never tells
+the player which goal applies until the final case file is opened.
+
+
+9. RED-NOIR INTERFACE SYSTEM
+----------------------------
+The GUI uses evidence black, clue red, newsprint grey and photo-paper white.
+Light surfaces always use dark text, while white text is reserved for black or
+dark-red surfaces. A fixed type hierarchy separates display titles, section
+headings, card titles, body copy and monospaced case data. The top case-status
+bar and action cards use consistent pictograms drawn by Tkinter. Seven local PNG
+silhouettes distinguish Evelyn, the four NPC suspects, Detective Reed and
+Charles Whitmore through posture, clothing and props. Portrait failure never
+blocks the game because every dossier has a text-only fallback.
+
+The desktop layout reserves approximately 24% for dossiers, 62% for the active
+investigation and 14% for evidence. Evelyn's portrait and changing player data
+share one prominent card; the four NPC dossiers use a compact 2 x 2 grid, and
+the compact victim file anchors the bottom of the rail with case facts. Stage-specific
+incident, identity, suspect, briefing and round compositions replace the old
+generic text canvas. Character images use one consistent photo-paper background
+across the rail, story pages and dossiers. Evidence is never presented as one
+dense text field: every discovered clue and testimony is rendered as a
+separate paper card with a category, title, full detail and source/status line.
+All interactive controls and modal overlays are custom high-contrast Tkinter
+panels so native macOS styling cannot create pale backgrounds behind white
+labels or detach decisions from the case desk.
+
