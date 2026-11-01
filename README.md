@@ -12,7 +12,7 @@ Each case has a code that can be reused to replay the same underlying mystery. T
 
 The Python source files and this README are submitted to Ed's Code Submission. Because Ed has a 2 MB upload limit, the complete illustrated project is provided as a ZIP file on GitHub:
 
-**The complete project download link:https://github.com/meli0947/The-fifth-alibi/releases/download/v1.0/The_Fifth_Alibi_MenghaoLi.zip
+**The complete project download link:https: //github.com/meli0947/The-fifth-alibi/releases/download/v1.0/fifth_alibi_gui_MenghaoLi.zip
 **
 
 On the Release page, expand **Assets** and download **`The_Fifth_Alibi_MenghaoLi.zip`** (approximately 38 MB). Extract this file to obtain the Python scripts and the `assets/` folder. **Do not download GitHub's automatically generated “Source code (zip)”** for the illustrated version: the repository's source archive does not contain the illustration assets.
