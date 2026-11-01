@@ -4,167 +4,205 @@ THE FIFTH ALIBI — COMP9001 Final Project
 1. PROJECT OVERVIEW
 -------------------
 The Fifth Alibi is a single-player, replayable murder mystery written in
-Python. You play Evelyn Hart, one of five suspects after Charles Whitmore is
-found dead. Investigate clues, speak to suspects, manage suspicion, and vote
-before presenting a final accusation supported by evidence. A case code
-reproduces the same underlying mystery for replay or demonstration.
+Python. You play Evelyn Hart, one of five suspects after Charles Whitmore
+is found dead at his estate. Investigate clues, speak to suspects, manage
+suspicion and trust, vote each round, and make a final accusation supported
+by evidence. A case code reproduces the same underlying mystery for replay
+or demonstration.
 
-2. SUBMISSION AND WHICH VERSION TO RUN
---------------------------------------
-Submit all Python source files in Ed's Code Submission. The illustration
-folder cannot be uploaded there. The complete project folder, including this
-README and assets/, will be sent separately to the tutor by email. The two
-versions use the same game rules:
+The project includes a fully playable terminal version and an illustrated
+Tkinter GUI. Both versions use the same game rules.
 
-* On Ed or in a terminal, run fifth_alibi.py. It needs no image files,
-  Tkinter window, or third-party packages. This is the version to use if the
-  GUI cannot be displayed.
-* On a desktop computer, run fifth_alibi_gui.py from the complete emailed
-  folder. Keep assets/ beside the Python files to see the illustrations.
-  Ed's code runner cannot display a Tkinter window.
 
-Use Python 3.12 or later. The GUI also needs Tkinter with Tk 8.6 or later and
-a graphical desktop. No third-party packages, network access, or audio/video
-tools are required. The GUI has been tested on macOS; its layout can vary with
-the operating system, font availability, and display scaling.
+2. SUBMISSION AND COMPLETE PROJECT
+----------------------------------
+All Python source files and this README.txt are submitted to Ed's Code
+Submission. Ed has a 2 MB upload limit, so the complete illustrated project
+is available as a ZIP file on GitHub:
 
-3. EXACT RUN INSTRUCTIONS
+https://github.com/meli0947/The-fifth-alibi/releases/latest
+
+On that page, expand "Assets" and download:
+
+The_Fifth_Alibi_MenghaoLi.zip
+
+This is the complete project ZIP, approximately 38 MB. Extract it to obtain
+the Python scripts and the assets/ folder. Do not use GitHub's automatically
+generated "Source code (zip)" for the illustrated version, because that
+archive does not contain the illustration assets.
+
+The terminal version, fifth_alibi.py, does not need the image assets or a
+Tkinter window. Ed's online runner cannot display the GUI, so the tutor can
+run the terminal version on Ed and download the complete ZIP to try the GUI
+locally. The hosted project will not be modified after the submission
+deadline.
+
+
+3. REQUIREMENTS
+---------------
+- Python 3.12 or later.
+- No third-party Python packages are required.
+- The terminal version needs a command-line terminal.
+- The GUI needs Tkinter with Tk 8.6 or later and a graphical desktop.
+- The game does not require network access during play.
+
+The GUI has been tested on macOS. Its layout may vary with the operating
+system, available fonts, screen size, and display scaling.
+
+
+4. EXACT RUN INSTRUCTIONS
 -------------------------
-Download or extract the complete emailed folder, open a terminal or command
-prompt, and change into the directory containing fifth_alibi.py. Do not run
-the commands from the parent directory.
+Download and extract The_Fifth_Alibi_MenghaoLi.zip. Open a terminal or
+command prompt and change into the extracted folder containing
+fifth_alibi.py and fifth_alibi_gui.py. Run the commands from that folder,
+not its parent directory.
 
-macOS / Linux:
-    python3 fifth_alibi.py
-    python3 fifth_alibi_gui.py
+Terminal version:
 
-Windows (with the Python launcher):
-    py fifth_alibi.py
-    py fifth_alibi_gui.py
+    macOS / Linux:  python3 fifth_alibi.py
+    Windows:        py fifth_alibi.py
 
-For example, after extracting a folder named fifth_alibi_gui_english, change
-into that folder first. If a computer uses a different Python command, replace
-python3 or py with that command. The program creates a case code when you
-start; follow the numbered prompts in the terminal or the buttons in the GUI.
+Illustrated GUI version:
 
-To check Tkinter if the GUI does not open, run the appropriate command:
-macOS / Linux:
-    python3 check_tkinter.py
-Windows:
-    py check_tkinter.py
+    macOS / Linux:  python3 fifth_alibi_gui.py
+    Windows:        py fifth_alibi_gui.py
 
-If Tkinter is unavailable, use fifth_alibi.py. If the GUI launches but images
+The terminal version uses numbered text prompts. The GUI uses buttons,
+character dossiers, and a scrollable evidence board.
+
+If the GUI does not open, check Tkinter with:
+
+    macOS / Linux:  python3 check_tkinter.py
+    Windows:        py check_tkinter.py
+
+If Tkinter is unavailable, use fifth_alibi.py. If the GUI opens but images
 are missing, check that assets/ is inside the same folder as the scripts.
 
-4. HOW TO PLAY
+
+5. HOW TO PLAY
 --------------
-1. Generate a new case code, or enter an earlier code to replay the same
-   killer, murder method, location, evidence, and investigation order.
-2. Read the incident report, Evelyn's identity, the other four suspects'
-   profiles, and Detective Reed's briefing.
-3. Play three distinct investigation themes randomly selected from five:
-   two crime-scene themes, a movement timeline, secrets, and testimony.
-   In each round, spend action points to investigate leads, persuade someone,
-   or deceive someone. Investigations and conversations have per-round limits.
-4. After the actions, review the suspects' statements and cast Evelyn's vote
-   for one suspect, selecting supporting evidence from any clues found.
-5. After three rounds, accuse a suspect and select up to two evidence items.
-   The report first states the outcome, then explains votes, scores, evidence
-   connections, and what actually happened. Evelyn can be the killer, and
-   high suspicion may cause her early arrest.
+1. Start a new case or enter an earlier case code to replay the same
+   underlying mystery.
+2. Read the incident report, Evelyn's identity, the other suspects'
+   dossiers, and Detective Reed's briefing.
+3. Play three distinct investigation themes randomly selected from five.
+   In each round, spend limited action points investigating leads or
+   interacting with suspects. Suspicion, trust, and evidence can change.
+4. After each round, review the other suspects' statements and cast
+   Evelyn's vote for one suspect with supporting evidence.
+5. After three rounds, make a final accusation and select supporting
+   evidence. The final report states the outcome first, then explains
+   the votes, evidence chain, and actual events.
 
-In the GUI, the left rail holds character dossiers and the right rail is a
-scrollable evidence board. Death-scene and round illustrations are selected
-to match the generated case. The terminal version presents the same game
-rules through numbered text choices.
+Evelyn herself may be the culprit. High suspicion may also cause her
+arrest before the final verdict.
 
-5. FILE GUIDE
+
+6. FILE GUIDE
 -------------
-fifth_alibi.py            Case generation, domain classes, game rules,
-                          scoring, verdict, and terminal entry point.
-fifth_alibi_gui.py        Tkinter interface using the same game rules.
-check_tkinter.py          Local Tkinter compatibility check.
-test_game.py              Automated game-rule tests.
-test_gui_compatibility.py GUI and illustration compatibility checks.
-assets/                   Portraits and scene illustrations (emailed package).
+fifth_alibi.py
+    Case generation, character and evidence data, game rules, voting,
+    verdict calculation, history saving, and the terminal entry point.
 
-Completed cases write fifth_alibi_history.json in the working directory.
+fifth_alibi_gui.py
+    Tkinter interface using the shared rules in fifth_alibi.py.
 
-6. OPTIONAL CHECKS
+check_tkinter.py
+    Local Tkinter compatibility check.
+
+test_game.py
+    Automated game-rule tests.
+
+test_gui_compatibility.py
+    GUI and illustration compatibility checks.
+
+assets/
+    Character portraits and scene illustrations in the complete
+    Release ZIP.
+
+Completed cases may write fifth_alibi_history.json in the working
+directory.
+
+
+7. OPTIONAL CHECKS
 ------------------
-From the folder containing the Python files:
+To run a non-interactive terminal demonstration:
 
-macOS / Linux:
-    python3 fifth_alibi.py --demo
-    python3 -m unittest discover -p 'test_*.py' -v
+    macOS / Linux:  python3 fifth_alibi.py --demo
+    Windows:        py fifth_alibi.py --demo
 
-Windows:
-    py fifth_alibi.py --demo
-    py -m unittest discover -p "test_*.py" -v
+To run the included automated tests:
 
---demo runs a non-interactive three-round smoke test; it is not the normal
-play mode. The unittest command runs the packaged automated checks. GUI
-compatibility checks need Tkinter; use the terminal game if the environment
-cannot provide it. Automated checks do not replace a manual GUI playthrough
-on the tutor's computer.
+    macOS / Linux:
+        python3 -m unittest discover -p 'test_*.py' -v
 
-7. HOW THE PROJECT ADDRESSES THE MARKING CRITERIA
+    Windows:
+        py -m unittest discover -p "test_*.py" -v
+
+These checks supplement a normal playthrough. They cannot guarantee
+identical GUI display on every computer.
+
+
+8. HOW THE PROJECT ADDRESSES THE MARKING CRITERIA
 -------------------------------------------------
 
 (A) FUNCTIONALITY
-The playable terminal entry point is fifth_alibi.py; the illustrated entry
-point is fifth_alibi_gui.py. Both run the case model in fifth_alibi.py. The
-case progresses from setup and character introductions through three rounds,
-mandatory votes, a final theory, and an explained outcome. Game.run controls
-the terminal sequence; the GUI calls the same Game methods and shared verdict
-functions. Limited actions, early arrest, and missing evidence have explicit
-paths rather than leaving the player in an incomplete round. test_game.py
-checks deterministic generation, distinct rounds, evidence exchanges,
-deception, and final scoring; test_gui_compatibility.py checks key GUI stages
-and packaged assets. The --demo command exercises three rounds without
-manual input. These checks support the functionality claim; they cannot
-guarantee identical display behaviour on every operating system.
+
+The terminal and GUI versions cover the complete game flow: case setup,
+character introductions, three investigation rounds, player actions,
+suspect statements, round votes, a final accusation, and an explained
+outcome. Both interfaces use the same game model. The included tests and
+--demo mode provide ways to check important game behaviour.
+
 
 (B) STRUCTURE AND DOCUMENTATION
-Evidence, Character, and Case hold the case data. CaseGenerator creates a
-reproducible mystery; Game owns actions, NPC behaviour, voting, scoring, and
-the terminal flow. DemoGame provides a non-interactive check. The separate
-FifthAlibiGUI class handles Tkinter layout, dialogs, image display, and input
-while calling the shared rules. Functions separate case generation, clue
-selection, social interactions, verdict calculation, and history saving.
-English comments and docstrings explain the important classes, stage changes,
-and decisions. This README identifies the entry points, files, requirements,
-commands, and gameplay so the project can be run without reading the source.
+
+The code separates case data, case generation, game rules, and
+presentation. Evidence, Character, and Case represent the mystery.
+CaseGenerator creates reproducible cases from case codes. Game manages
+player actions, NPC behaviour, voting, scoring, and the terminal flow.
+FifthAlibiGUI handles graphical layout and input while calling the shared
+game rules.
+
+Functions divide major tasks. English comments and docstrings explain
+important classes, stage changes, and decisions. This README identifies
+the files, entry points, requirements, commands, and gameplay steps.
+
 
 (C) ADVANCED PYTHON CONCEPTS
-1. Object-oriented programming: Evidence, Character, Case, CaseGenerator,
-   and Game separate the fixed case solution from changing character beliefs
-   and player actions. The GUI reuses those objects instead of duplicating
-   the rules.
-2. File I/O and exception handling: Game.write_history serialises the case
-   result, discovered evidence, and votes to fifth_alibi_history.json. It
-   catches OSError and tells the player if saving fails, without discarding
-   the game result. The GUI also reports callback errors to a log; missing
-   optional illustration files leave a usable text or placeholder view.
-3. Reproducible randomisation and nested data structures: CaseGenerator uses
-   a local random.Random instance seeded by the case code. It selects the
-   culprit, method, location, clues, and three of five investigation topics.
-   Dictionaries and lists hold characters' private suspicion, evidence, and
-   votes; these data feed the evidence-chain and final-score calculations.
+
+1. Object-oriented programming:
+   Classes separate evidence, characters, case generation, changing game
+   state, and the graphical interface. The GUI reuses the game model
+   instead of duplicating its rules.
+
+2. File I/O and exception handling:
+   Completed cases can be saved as JSON. The program handles problems
+   such as a failed save or a missing optional illustration without
+   silently discarding the game result.
+
+3. Seeded randomisation and nested data structures:
+   Case codes produce replayable mysteries while varying culprits,
+   murder methods, clues, investigation themes, character beliefs, and
+   votes. Lists and dictionaries organise evidence and changing social
+   information used in the final verdict.
+
 
 (D) CREATIVITY AND ORIGINALITY
-The player is both an investigator and a possible suspect. Each case code
-creates a replayable social mystery with a different culprit, murder method,
-clue set, and selection of investigation themes. NPCs investigate and vote
-independently; trust, deception, retaliation, and evidence sharing can change
-their views of Evelyn and of one another. The final decision combines votes,
-clue relevance, and evidence from different investigation stages, then
-explains the result and reveals the actual events. The optional GUI presents
-the same mystery through character dossiers, an evidence board, and original
-red-and-black scene illustrations; the terminal version remains fully
-playable without images.
 
-Padlet and presentation: The separate Padlet post needs the project title,
-a representative image, and a short description naming the target audience.
-The in-class presentation is three minutes. Those submission activities
-cannot be established by the program files alone.
+The player investigates a murder while also being a suspect and
+potentially the culprit. Limited actions, changing trust, deception,
+independent NPC decisions, and evidence-based voting make each case a
+social mystery. The final report explains how votes and clues relate to
+the verdict.
+
+The optional GUI presents the story through character dossiers, a live
+evidence board, and original noir-inspired illustrations. The terminal
+version remains fully playable without images.
+
+
+9. PADLET AND PRESENTATION
+--------------------------
+The separate Padlet post includes the project title, a representative
+image, and a short description naming the target audience. The project
+will also be demonstrated in a three-minute tutorial presentation.
